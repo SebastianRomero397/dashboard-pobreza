@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tablero de Pobreza México 2008-2018 - CONEVAL</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+
+      // Gráfico 1: Pobreza general
+      var data1 = google.visualization.arrayToDataTable([
+        ['Año', 'Pobreza (%)'],
+        ['2008', 44.4],
+        ['2018', 41.9]
+      ]);
+      var options1 = {
+        title: 'Porcentaje de población en pobreza (2008 - 2018)',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+      };
+      var chart1 = new google.visualization.LineChart(document.getElementById('chart1'));
+      chart1.draw(data1, options1);
+
+      // Gráfico 2: Pobreza extrema
+      var data2 = google.visualization.arrayToDataTable([
+        ['Año', 'Pobreza extrema (%)'],
+        ['2008', 11.0],
+        ['2018', 7.4]
+      ]);
+      var options2 = {
+        title: 'Pobreza extrema (2008 - 2018)',
+        isStacked: true
+      };
+      var chart2 = new google.visualization.AreaChart(document.getElementById('chart2'));
+      chart2.draw(data2, options2);
+
+      // Gráfico 3: Carencias sociales comparadas
+      var data3 = google.visualization.arrayToDataTable([
+        ['Carencia', '2008', '2018'],
+        ['Rezago educativo', 21.9, 16.9],
+        ['Salud', 38.4, 16.2],
+        ['Seguridad social', 65.0, 57.3],
+        ['Calidad vivienda', 17.7, 11.1],
+        ['Servicios vivienda', 22.9, 19.8],
+        ['Alimentación', 21.7, 20.4]
+      ]);
+      var options3 = {
+        title: 'Carencias sociales comparadas (2008 vs 2018)',
+        bars: 'vertical',
+        isStacked: false
+      };
+      var chart3 = new google.visualization.ColumnChart(document.getElementById('chart3'));
+      chart3.draw(data3, options3);
+
+      // Gráfico 4: Pobreza rural vs urbana
+      var data4 = google.visualization.arrayToDataTable([
+        ['Año', 'Rural', 'Urbana'],
+        ['2008', 62.4, 39.1],
+        ['2018', 55.3, 37.6]
+      ]);
+      var options4 = {
+        title: 'Pobreza en zonas rurales vs urbanas',
+        bars: 'group'
+      };
+      var chart4 = new google.visualization.BarChart(document.getElementById('chart4'));
+      chart4.draw(data4, options4);
+
+      // Gráfico 5: Pobreza por grupo poblacional (2018)
+      var data5 = google.visualization.arrayToDataTable([
+        ['Grupo', 'Pobreza (%)'],
+        ['Mujeres', 42.4],
+        ['Hombres', 41.4],
+        ['Indígenas', 74.9],
+        ['No indígenas', 39.4],
+        ['<18 años', 49.6],
+        ['65+', 41.1]
+      ]);
+      var options5 = {
+        title: 'Pobreza por grupo poblacional (2018)'
+      };
+      var chart5 = new google.visualization.PieChart(document.getElementById('chart5'));
+      chart5.draw(data5, options5);
+    }
+  </script>
+</head>
+<body>
+  <h1>Tablero de Visualización: Pobreza en México (2008-2018)</h1>
+  <div id="chart1" style="width: 900px; height: 500px;"></div>
+  <div id="chart2" style="width: 900px; height: 500px;"></div>
+  <div id="chart3" style="width: 900px; height: 500px;"></div>
+  <div id="chart4" style="width: 900px; height: 500px;"></div>
+  <div id="chart5" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
